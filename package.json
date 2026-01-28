@@ -1,0 +1,11 @@
+{
+  "name": "Sauce Demo",
+  "version": "1.0.0",
+  "description": "Using the Sauce Demo from Swag Labs to play a bit with cypress as means of getting more experience in writing automatd tests",
+  "scripts": {
+     "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "cypress": "^15.8.2"
+  }
+}
