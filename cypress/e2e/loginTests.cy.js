@@ -1,15 +1,20 @@
 describe('template spec', () => {
+
+  const username = Cypress.env("standardUsername")
+  const blockedUser = Cypress.env("lockedoutUsername")
+  const password = Cypress.env("password")
+
   beforeEach(()=>{
-    cy.visit('https://www.saucedemo.com/')
+    cy.visit('/')
   })
   it('Successful login', () => {
     cy.get('[data-test="username"]')
       .click()
-      .type('standard_user')
+      .type(username)
     
     cy.get('[data-test="password"]')
       .click()
-      .type('secret_sauce')
+      .type(password)
 
     cy.get('[data-test="login-button"')
       .click()
@@ -22,11 +27,11 @@ describe('template spec', () => {
 
     cy.get('[data-test="username"]')
       .click()
-      .type('standard_user')
+      .type(username)
     
     cy.get('[data-test="password"]')
       .click()
-      .type('secret_sauce')
+      .type(password)
 
     cy.get('[data-test="login-button"')
       .click()
@@ -48,7 +53,7 @@ describe('template spec', () => {
 
     cy.get('[data-test="password"]')
       .click()
-      .type('secret_saucerino')
+      .type("1234")
 
     cy.get('[data-test="login-button"')
       .click()
@@ -62,11 +67,11 @@ describe('template spec', () => {
   it('Fails login due to the user being blocked', () => {
         cy.get('[data-test="username"]')
       .click()
-      .type('locked_out_user')
+      .type(blockedUser)
 
     cy.get('[data-test="password"]')
       .click()
-      .type('secret_sauce')
+      .type(password)
 
     cy.get('[data-test="login-button"')
       .click()
