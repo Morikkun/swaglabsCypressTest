@@ -9,7 +9,7 @@ cypress/screenshots/
 cypress/downloads/
 
 # Environment
-cypress.env.jsonquit
+cypress.env.json
 .env
 .env.local
 
