@@ -2,9 +2,16 @@ name: End-to-end tests
 on: push
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
+
+        env: 
+            STANDARD_USERNAME: ${{secrets.STANDARD_USERNAME}}
+            LOCKEDOUT_USERNAME: ${{secrets.LOCKEDOUT_USERNAME}}
+            PASSWORD: ${{secrets.PASSWORD}}
+
