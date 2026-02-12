@@ -1,10 +1,12 @@
 describe('template spec', () => {
-
-  const username = Cypress.env("standardUsername")
-  const blockedUser = Cypress.env("lockedoutUsername")
-  const password = Cypress.env("password")
-
+  let username, blockedUser, password
+  
   beforeEach(()=>{
+  cy.visit('/')
+    username = Cypress.env("standardUsername")
+    password = Cypress.env("password")
+    blockedUser = Cypress.env("lockedoutUsername")
+    
     cy.visit('/')
   })
   it('Successful login', () => {
