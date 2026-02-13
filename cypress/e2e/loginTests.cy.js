@@ -2,12 +2,12 @@ describe('template spec', () => {
   let username, blockedUser, password
   
   beforeEach(()=>{
-  cy.visit('/')
     username = Cypress.env("standardUsername")
     password = Cypress.env("password")
     blockedUser = Cypress.env("lockedoutUsername")
     
     cy.visit('/')
+    cy.get('[data-test="username"]').should('be.visible')
   })
   it('Successful login', () => {
     cy.get('[data-test="username"]')
@@ -18,10 +18,10 @@ describe('template spec', () => {
       .click()
       .type(password)
 
-    cy.get('[data-test="login-button"')
+    cy.get('[data-test="login-button"]')
       .click()
 
-    cy.get('[id="shopping_cart_container"]')
+    cy.get('[id="shopping_cart_container"]', { timeout: 10000 })
       .should('be.visible')
   })
 
@@ -35,10 +35,10 @@ describe('template spec', () => {
       .click()
       .type(password)
 
-    cy.get('[data-test="login-button"')
+    cy.get('[data-test="login-button"]')
       .click()
     
-    cy.get('#react-burger-menu-btn')
+    cy.get('#react-burger-menu-btn', { timeout: 10000 })
       .click()
 
     cy.get('[data-test="logout-sidebar-link"]')
@@ -57,10 +57,10 @@ describe('template spec', () => {
       .click()
       .type("1234")
 
-    cy.get('[data-test="login-button"')
+    cy.get('[data-test="login-button"]')
       .click()
 
-    cy.get('[data-test="error"]')
+    cy.get('[data-test="error"]', { timeout: 10000 })
       .should('be.visible')
       .and('contain','Epic sadface: Username and password do not match any user in this service')
 
@@ -75,10 +75,10 @@ describe('template spec', () => {
       .click()
       .type(password)
 
-    cy.get('[data-test="login-button"')
+    cy.get('[data-test="login-button"]')
       .click()
 
-    cy.get('[data-test="error"]')
+    cy.get('[data-test="error"]', { timeout: 10000 })
       .should('be.visible')
       .and('contain','Epic sadface: Sorry, this user has been locked out.')
   })
