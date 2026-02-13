@@ -15,3 +15,14 @@ jobs:
             LOCKEDOUT_USERNAME: ${{secrets.LOCKEDOUT_USERNAME}}
             PASSWORD: ${{secrets.PASSWORD}}
 
+      - name: Upload Cypress artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
+          retention-days: 30
+
+
