@@ -10,6 +10,9 @@ module.exports = defineConfig({
       config.env.password = process.env.PASSWORD || config.env.password
       return config
     },
+    screenshotOnRunFailure: true,
+    video: true,
+    videoOnFailOnly: true,
     baseUrl: 'https://www.saucedemo.com'
   },
 });
