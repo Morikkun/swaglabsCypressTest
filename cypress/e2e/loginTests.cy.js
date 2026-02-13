@@ -2,14 +2,15 @@ describe('template spec', () => {
   let username, blockedUser, password
   
   beforeEach(()=>{
-    cy.visit('/')
+    
     username = Cypress.env("standardUsername")
     password = Cypress.env("password")
     blockedUser = Cypress.env("lockedoutUsername")
     
+    cy.visit('/')
     cy.get('[data-test="username"]').should('be.visible')
   })
-  it.only('Successful login', () => {
+  it('Successful login', () => {
     cy.get('[data-test="username"]')
       .click()
       .type(username)
